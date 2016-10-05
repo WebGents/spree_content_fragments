@@ -1,0 +1,40 @@
+<%= render partial: 'spree/admin/shared/product_tabs', locals: { current: :content_fragments } %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to(Spree.t(:new_content_fragment), spree.new_admin_product_content_fragment_url(@product), { class: "btn-success", icon: 'add', id: 'new_content_fragment_link' }) if can? :create, Spree::ContentFragment %>
+<% end %>
+
+<% unless @content_fragments.any? %>
+  <div class="alert alert-warning">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::ContentFragment)) %>.
+  </div>
+<% else %>
+  <table class="table sortable" id='listing_content_fragments' data-hook data-sortable-link="<%= update_positions_admin_product_content_fragments_url(@product) %>">
+    <thead>
+      <tr data-hook="content_fragments_header">
+        <th></th>
+        <th><%= Spree.t(:position) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @content_fragments.each do |content_fragment|
+           @edit_url = edit_admin_content_fragment_path(content_fragment)
+           @delete_url = admin_content_fragment_path(content_fragment)
+      %>
+        <tr id="<%= spree_dom_id content_fragment %>" data-hook="content_fragment_row">
+          <td class="move-handle text-center">
+            <% if can? :edit, content_fragment %>
+              <span class="icon icon-move handle"></span>
+            <% end %>
+          </td>
+          <td><%= content_fragment.title %></td>
+          <td class="actions actions-2 text-center">
+            <%= link_to_edit(content_fragment, no_text: true) if can? :create, content_fragment %>
+            <%= link_to_delete(content_fragment, no_text: true) if can? :create, content_fragment %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

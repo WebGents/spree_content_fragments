@@ -1,0 +1,10 @@
+---
+en:
+  spree:
+    content_fragments: 'Content Fragments'
+    new_content_fragment: 'New Content Fragment'
+  activerecord:
+    models:
+      spree/content_fragment:
+        one: 'Fragment'
+        other: 'Fragments'

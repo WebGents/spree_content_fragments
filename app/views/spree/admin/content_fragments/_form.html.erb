@@ -1,0 +1,27 @@
+<div class="row" data-hook="admin_content_fragment_form_fields">
+  <div class="col-md-8" data-hook="admin_content_fragment_form_left">
+    <div class="form-group">
+      <%= f.label :title %> <span class="required">*</span>
+      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.error_message_on :title %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :body %>
+      <%= f.text_area :body, rows: 12, class: 'form-control' %>
+      <%= f.error_message_on :body %>
+    </div>
+  </div>
+
+  <div class="col-md-4" data-hook="admin_content_fragment_form_right">
+    <div class="form-group">
+      <%= f.label :background_image %>
+      <%= f.text_field :background_image, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :style %>
+      <%= f.text_area :style, rows: 12, class: 'form-control' %>
+    </div>
+  </div>
+</div>
