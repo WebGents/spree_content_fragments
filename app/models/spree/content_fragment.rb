@@ -7,5 +7,18 @@ module Spree
 
     validates :title, presence: true
     validates :position, presence: true, numericality: true
+
+    has_attached_file :background_image,
+                      styles: { mini: '48x48>', small: '100x100>' },
+                      default_style: :small,
+                      url: '/spree/:class/:id/:style/:basename.:extension',
+                      path: ':rails_root/public/spree/:class/:id/:style/:basename.:extension'
+
+    validates_attachment :background_image,
+      content_type: { content_type: %w(image/jpeg image/jpg image/png image/gif) }
+
+    def view_model
+      ContentFragmentViewModel.new(self)
+    end
   end
 end

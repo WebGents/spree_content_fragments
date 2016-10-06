@@ -17,6 +17,7 @@ require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 
 require 'rspec/rails'
 require 'shoulda/matchers'
+require 'paperclip/matchers'
 require 'database_cleaner'
 require 'ffaker'
 
