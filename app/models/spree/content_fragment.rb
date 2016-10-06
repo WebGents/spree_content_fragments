@@ -17,6 +17,8 @@ module Spree
     validates_attachment :background_image,
       content_type: { content_type: %w(image/jpeg image/jpg image/png image/gif) }
 
+    default_scope -> { order(:position) }
+
     def view_model
       ContentFragmentViewModel.new(self)
     end
