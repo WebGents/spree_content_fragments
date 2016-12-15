@@ -15,6 +15,13 @@
   </div>
 
   <div class="col-md-4" data-hook="admin_content_fragment_form_right">
+
+    <div class="form-group">
+      <%= f.label :fullscreen %>
+      <%= preference_field_tag(:fullscreen, f.object.preferred_fullscreen, type: :boolean) %>
+      <%#= f.check_box :fullscreen, class: 'form-control' %>
+    </div>
+
     <div class="form-group">
       <%= f.label :background_image %>
       <% if f.object.background_image.present? %>

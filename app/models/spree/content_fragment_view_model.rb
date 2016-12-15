@@ -13,6 +13,10 @@ module Spree
       "content_fragment_#{@fragment.id}"
     end
 
+    def tag_classes
+      "#{'fullscreen' if @fragment.preferred_fullscreen}"
+    end
+
     def style_tag_content
       scss <<-SCSS
         ##{tag_id} {

@@ -1,7 +1,7 @@
 module Spree
   # Represents a fragment of content. It can belong to any kind of object
   # although at the time of writing, only products are supported (see the controller)
-  class ContentFragment < ActiveRecord::Base
+  class ContentFragment < Spree::Base
     acts_as_list scope: %i(parent_id parent_type)
     belongs_to :parent, polymorphic: true
 
@@ -14,10 +14,11 @@ module Spree
                       url: '/spree/:class/:id/:style/:basename.:extension',
                       path: ':rails_root/public/spree/:class/:id/:style/:basename.:extension'
 
-    validates_attachment :background_image,
-      content_type: { content_type: %w(image/jpeg image/jpg image/png image/gif) }
+    validates_attachment :background_image, content_type: { content_type: %w(image/jpeg image/jpg image/png image/gif) }
 
     default_scope -> { order(:position) }
+
+    preference :fullscreen, :boolean_select, default: :true
 
     def view_model
       ContentFragmentViewModel.new(self)

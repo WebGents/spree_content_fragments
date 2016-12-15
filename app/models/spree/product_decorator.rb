@@ -3,4 +3,6 @@ module Spree
   Product.class_eval do
     has_many :content_fragments, as: :parent
   end
+
+
 end
