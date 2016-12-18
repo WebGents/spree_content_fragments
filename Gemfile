@@ -4,5 +4,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "git@github.com:#{repo}.git" }
 
 gem 'spree', github: 'spree/spree', branch: 'master'
+gem 'paperclip-av-transcoder'
 
 gemspec

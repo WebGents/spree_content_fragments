@@ -14,7 +14,14 @@ module Spree
                       url: '/spree/:class/:id/:style/:basename.:extension',
                       path: ':rails_root/public/spree/:class/:id/:style/:basename.:extension'
 
-    validates_attachment :background_image, content_type: { content_type: %w(image/jpeg image/jpg image/png image/gif) }
+    has_attached_file :background_video, :styles => {
+                      hd: { :geometry => "1920x1080", :format => 'flv' },
+                      :medium => { :geometry => "640x480", :format => 'flv' },
+                      :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
+                    }, :processors => [:transcoder]
+
+    #validates_attachment_content_type :background_video, :content_type => /\Avideo\/.*\Z/
+    validates_attachment :background_video, content_type: { content_type: %w(image/jpeg image/jpg image/png image/gif) }
 
     default_scope -> { order(:position) }
 
