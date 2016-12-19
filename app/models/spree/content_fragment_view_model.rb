@@ -29,8 +29,8 @@ module Spree
     protected
 
     def background_style
-      return nil unless @fragment.background_image.present?
-      "background-image: url(#{@fragment.background_image.url(:original)});"
+      return nil unless @fragment.is_image_type?
+      "background-image: url(#{@fragment.background_media.url(:original)});"
     end
 
     def scss(string)
