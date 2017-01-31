@@ -54,8 +54,13 @@
     <hr>
 
     <div class="form-group">
-      <%= f.label :text_position %><br>
-      <%#= f.select :text_position, options_for_select(Spree::ContentFragment.text_positions) %>
+      <%= f.label :content_position_h %><br>
+      <%= f.select(:content_position_h, Spree::ContentFragment.content_position_hs.keys.map {|role| [role.titleize,role]}) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :content_position_v %><br>
+      <%= f.select(:content_position_v, Spree::ContentFragment.content_position_vs.keys.map {|role| [role.titleize,role]}) %>
     </div>
 
   </div>

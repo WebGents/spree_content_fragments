@@ -14,7 +14,7 @@ module Spree
     end
 
     def tag_classes
-      "#{'fullscreen' if @fragment.fullpage}"
+      "#{'fullscreen' if @fragment.fullpage} content-position-ver-#{@fragment.content_position_v} content-position-hor-#{@fragment.content_position_h}"
     end
 
     def style_tag_content

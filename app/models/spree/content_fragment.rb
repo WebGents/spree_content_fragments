@@ -13,14 +13,13 @@ module Spree
     ## Spree preferences
 
 
-    enum text_position: { left: 0, center: 1, right: 2 }
+    enum content_position_h: { left: 0, center: 1, right: 2 }
+    enum content_position_v: { top: 0, middle: 1, bottom: 2 }
 
     # Apply styling appropriate for this file
     has_attached_file :background_media,
                         styles: lambda { |a| a.instance.check_file_type}, :default_url => "missing.png",
                         default_style: :medium,
-                        url: '/spree/:class/:id/:style/:basename.:extension',
-                        path: ':rails_root/public/spree/:class/:id/:style/:basename.:extension',
                         processors: lambda { |a| a.is_video_type? ? [ :transcoder ] : [ :thumbnail ] }
 
     #
