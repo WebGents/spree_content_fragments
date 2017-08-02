@@ -14,7 +14,7 @@ module Spree
     end
 
     def tag_classes
-      "#{'fullscreen' if @fragment.preferred_fullscreen}"
+      "#{'fullscreen' if @fragment.fullpage} content-position-ver-#{@fragment.content_position_v} content-position-hor-#{@fragment.content_position_h}"
     end
 
     def style_tag_content
@@ -29,8 +29,8 @@ module Spree
     protected
 
     def background_style
-      return nil unless @fragment.background_image.present?
-      "background-image: url(#{@fragment.background_image.url(:original)});"
+      return nil unless @fragment.is_image_type?
+      "background-image: url(#{@fragment.background_media.url(:original)});"
     end
 
     def scss(string)

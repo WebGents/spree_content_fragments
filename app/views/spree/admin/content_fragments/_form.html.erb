@@ -12,29 +12,57 @@
       <%= f.text_area :body, rows: 12, class: 'form-control' %>
       <%= f.error_message_on :body %>
     </div>
-  </div>
-
-  <div class="col-md-4" data-hook="admin_content_fragment_form_right">
-
-    <div class="form-group">
-      <%= f.label :fullscreen %>
-      <%= preference_field_tag(:fullscreen, f.object.preferred_fullscreen, type: :boolean) %>
-      <%#= f.check_box :fullscreen, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :background_image %>
-      <% if f.object.background_image.present? %>
-        <div>
-          <%= image_tag f.object.background_image.url(:mini) %>
-        </div>
-      <% end %>
-      <%= f.file_field :background_image, class: 'form-control' %>
-    </div>
 
     <div class="form-group">
       <%= f.label :style %>
       <%= f.text_area :style, rows: 12, class: 'form-control' %>
     </div>
+  </div>
+
+  <div class="col-md-4" data-hook="admin_content_fragment_form_right">
+
+    <div class="form-group">
+      <%= f.label 'Background image or video' %>
+      <% if f.object.background_media.present? %>
+        <p>
+          <%= image_tag f.object.background_media.url(:thumb) %>
+        </p>
+      <% end %>
+      <%= f.file_field :background_media, class: 'form-control' %>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+      <%= f.label :fullpage do %>
+        <%= f.check_box :fullpage, wrapper_html: { tag_name: 'span'} %>
+          Fullscreen
+          <p class="text-muted">Fit content fragment to view height.</p>
+      <% end %>
+    </div>
+
+    <hr>
+
+    <h4>Content</h4>
+    <div class="form-group">
+      <%= f.label :box_around_content do %>
+        <%= f.check_box :box_around_content %>
+        Box around text
+        <p class="text-muted"></p>
+      <% end %>
+    </div>
+
+
+    <h4>Content Position</h4>
+    <div class="form-group">
+      <%= f.label 'horizontal' %><br>
+      <%= f.select(:content_position_h, Spree::ContentFragment.content_position_hs.keys.map {|role| [role.titleize,role]}) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'vertical' %><br>
+      <%= f.select(:content_position_v, Spree::ContentFragment.content_position_vs.keys.map {|role| [role.titleize,role]}) %>
+    </div>
+
   </div>
 </div>

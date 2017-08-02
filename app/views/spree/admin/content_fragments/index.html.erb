@@ -15,6 +15,7 @@
         <th></th>
         <th><%= Spree.t(:position) %></th>
         <th><%= Spree.t(:html_tag_id) %></th>
+        <th></th>
         <th class="actions"></th>
       </tr>
     </thead>
@@ -31,6 +32,7 @@
           </td>
           <td><%= content_fragment.title %></td>
           <td>#<%= content_fragment.view_model.tag_id %></td>
+          <td><%= image_tag content_fragment.background_media.url(:thumb) %></td>
           <td class="actions actions-2 text-center">
             <%= link_to_edit(content_fragment, no_text: true) if can? :create, content_fragment %>
             <%= link_to_delete(content_fragment, no_text: true) if can? :create, content_fragment %>

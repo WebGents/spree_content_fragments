@@ -9,6 +9,9 @@ image.
 
 See the Issues on the Git repo
 
+## Requirements
+1. ffmpeg https://ffmpeg.org/ for video processing. 'brew install ffmpeg --with-libvpx'
+
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
