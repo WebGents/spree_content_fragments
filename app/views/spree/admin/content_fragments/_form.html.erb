@@ -33,11 +33,12 @@
 
     <hr>
 
+    <h4>Size</h4>
     <div class="form-group">
       <%= f.label :fullpage do %>
         <%= f.check_box :fullpage, wrapper_html: { tag_name: 'span'} %>
-          Fullscreen
-          <p class="text-muted">Fit content fragment to view height.</p>
+        Fullscreen <br>
+        <span class="text-muted">Fit content fragment to viewport height and width.</span>
       <% end %>
     </div>
 
@@ -47,21 +48,31 @@
     <div class="form-group">
       <%= f.label :box_around_content do %>
         <%= f.check_box :box_around_content %>
-        Box around text
+        Box around content
         <p class="text-muted"></p>
       <% end %>
     </div>
 
 
     <h4>Content Position</h4>
-    <div class="form-group">
-      <%= f.label 'horizontal' %><br>
-      <%= f.select(:content_position_h, Spree::ContentFragment.content_position_hs.keys.map {|role| [role.titleize,role]}) %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label 'vertical' %><br>
-      <%= f.select(:content_position_v, Spree::ContentFragment.content_position_vs.keys.map {|role| [role.titleize,role]}) %>
+    <div class="well" id="position-select-wrapper">
+      <div class="row">
+        <div class="col-sm-4">
+          <%= f.radio_button :content_position, 1 %>
+          <%= f.radio_button :content_position, 4 %>
+          <%= f.radio_button :content_position, 7 %>
+        </div>
+        <div class="col-sm-4">
+          <%= f.radio_button :content_position, 2 %>
+          <%= f.radio_button :content_position, 5 %>
+          <%= f.radio_button :content_position, 8 %>
+        </div>
+        <div class="col-sm-4">
+          <%= f.radio_button :content_position, 3 %>
+          <%= f.radio_button :content_position, 6 %>
+          <%= f.radio_button :content_position, 9 %>
+        </div>
+      </div>
     </div>
 
   </div>

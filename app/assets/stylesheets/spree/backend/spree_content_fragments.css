@@ -2,3 +2,9 @@
 Placeholder manifest file.
 the installer will append this file to the app vendored assets here: 'vendor/assets/stylesheets/spree/backend/all.css'
 */
+
+#position-select-wrapper                                        { background: #f8f8f8; padding: 10%;}
+#position-select-wrapper input                                  { display: block; width: 100%; height: 40px; margin-bottom: 20px; }
+#position-select-wrapper input:last-child                       { margin-bottom: 0; }
+#position-select-wrapper input::before                          { content: ''; display: block; width: 100%; height: 100%; background: #efefef; border: 1px solid #ddd; }
+#position-select-wrapper input:checked:before                   { background: #478DC1;}
